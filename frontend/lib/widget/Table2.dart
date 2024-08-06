@@ -20,7 +20,7 @@ class Table2State extends State<Table2> {
 
 // READ EMPLOYEE
   void readEmployee() async {
-    var res = await http.get(Uri.parse('http://10.0.2.2:8080/read-user'));
+    var res = await http.get(Uri.parse('http://10.0.2.2:8000/read-user'));
 
     List<dynamic> jsonResponse = jsonDecode(res.body);
     setState(() {
@@ -40,7 +40,7 @@ class Table2State extends State<Table2> {
 
     try {
       await http.post(
-        Uri.parse('http://10.0.2.2:8080/add-user'),
+        Uri.parse('http://10.0.2.2:8000/add-user'),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode(data),
       );
@@ -61,7 +61,7 @@ class Table2State extends State<Table2> {
 
     try {
       await http.put(
-        Uri.parse("http://10.0.2.2:8080/update-employee/$id"),
+        Uri.parse("http://10.0.2.2:8000/update-employee/$id"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode(data),
       );
@@ -73,7 +73,7 @@ class Table2State extends State<Table2> {
 // DELETE EMPLOYEE
   void deleteEmployee(int id) async {
     try {
-      await http.delete(Uri.parse("http://10.0.2.2:8080/delete-user/$id"));
+      await http.delete(Uri.parse("http://10.0.2.2:8000/delete-user/$id"));
       readEmployee();
     } catch (e) {
       print(e);
